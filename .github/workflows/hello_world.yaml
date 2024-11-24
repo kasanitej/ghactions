@@ -6,4 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "ECHO"
-      run: echo "SHA ${{ github.sha }}\nBRANCH ${{ github.ref_name }}\nREPO ${{ github.repository }}"
+      run: echo "SHA ${{ github.sha }} BRANCH ${{ github.ref_name }} REPO ${{ github.repository }}"
+    - name: Fetch Repository Languages
+      run: |
+        curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/repos/${{ github.repository }}/languages | jq
