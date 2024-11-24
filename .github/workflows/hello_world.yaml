@@ -1,3 +1,6 @@
 name: Hello World Workflow
-run-name: "Hello World Run Name"
-on: [*]
+run-name: Hello World Run Name
+on: push
+jobs:
+  runs-on: ubuntu-latest
+  run: echo "SHA: ${{ github.sha }}\nBRANCH: ${{ github.ref_name }}\nREPO: ${{ github.repository }}"
